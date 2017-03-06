@@ -1,0 +1,52 @@
+{% extends 'landing/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ block.super }} - Index{% endblock %}
+{% block meta_desc %}Mafia: Esta es una prueba de Python con Django y AngularJS. {% endblock %}
+
+{% block content %}
+    <div class="row margin_bottom0 primary_fondo">
+        <div class="container sub_header_interior">
+            <div class="content">
+                <h2>HOLA MAFIA - INICIO</h2>
+                <p>Mi test de Python con Django y AngularJS.</p>
+            </div>
+        </div>
+
+
+        <div class="row  grey lighten-4 no-margin" ng-controller="MemberListController as listCtrl" ng-init="listCtrl.getAllMembers()">
+            <div class="container agenda">
+
+                <div class="row no-margin">
+                    <div class="col l12 m12 s12 ">
+                          <div class="card card_up agenda_card">
+                                <h1>TODA DE LA ORGANIZACIÓN</h1>
+                                <div class="agenda_content">
+
+                                    <div class="row ">
+                                        <div class="col hora_agenda_descanso">Nombre</div>
+                                        <div class="col que_agenda_descanso">Estado</div>
+                                        <div class="col que_agenda_descanso">Antigüedad</div>
+                                    </div>
+                                    <div class="row "  ng-repeat="member in listCtrl.members" ng-cloak="">
+                                        <div class="col hora_agenda">{/ member.name /}</div>
+                                        <div class="col que_agenda">{/ member.status /}
+                                        </div>
+                                        <div class="col que_agenda">{/ member.age /}</div>
+
+                                    </div>
+
+
+                                </div>
+                          </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

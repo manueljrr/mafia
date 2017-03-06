@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!-- menu -->
+
+{% url 'index' as url_index %}
+{% url 'member_info' as url_member %}
+
+<nav class="nav-extended borde-menu">
+    <div class="nav-wrapper  white nav_fixed">
+   
+        <a  href="{{ url_index }}" class="brand-logo">Inicio Mafia</a>
+
+        <ul class="tabs tabs-transparent padding-menu visible-desktop-menu ">
+            <li class="margin-left-menu">
+                <a class="waves-effect waves-purple waves-ripple {% if request.path == url_index %}active{% endif %}" href="{{ url_index }}">Inicio</a>
+                <a class="waves-effect waves-purple waves-ripple {% if request.path == url_member %}active{% endif %}" href="{{ url_member }}">Miembros</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+

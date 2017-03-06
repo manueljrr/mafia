@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="mafia">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+        <title>{% block title %}Mafia{% endblock %}</title>
+        <meta name="description" content="{% block meta_desc %}Description{% endblock %}" />
+    {% endblock %}
+
+    {% load staticfiles %}
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+</head>
+<body>
+
+{% block navbar %}
+    {% include "landing/menu.html" %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block base_js %}
+
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/utils.js' %}"></script>
+<script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/angular.min.js' %}"></script>
+<script src="{% static 'js/angular-basic-app.js' %}"></script>
+
+{% endblock %}
+
+{% block js_base_specific %}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% include "landing/loading.html" %}
+
+</body>
+</html>

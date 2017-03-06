@@ -1,0 +1,102 @@
+{% extends 'landing/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ block.super }} - Miembro{% endblock %}
+{% block meta_desc %}Mafia: Esta es una prueba de Python con Django y AngularJS. {% endblock %}
+
+{% block content %}
+    <div class="row margin_bottom0 primary_fondo">
+        <div class="container sub_header_interior">
+            <div class="content">
+                <h2>HOLA MAFIA - INICIO</h2>
+                <p>Mi test de Python con Django y AngularJS.</p>
+            </div>
+        </div>
+
+
+        <div class="row  grey lighten-4 no-margin" ng-controller="MemberController as memberCtrl" ng-init="memberCtrl.getAllMembers()">
+            <div class="container agenda">
+
+                <div class="row no-margin">
+                    <div class="col l12 m12 s12 ">
+                          <div class="card card_up agenda_card">
+                                <h1>AGREGAR UN NUEVO MIEMBRO</h1>
+                                <div class="agenda_content">
+
+                                <!--   INICIO FORM  -->
+                                <form name="memberCtrl.memberForm" novalidate ng-submit="memberCtrl.register()">
+                                    <div class="form2 margin_bottom_50">
+
+                                        <div class="row no-margin-sides">
+                                            <div class="col m6 s12 input-field padding_right_5 ">
+                                                <input id="nombre" type="text" required
+                                                       ng-model="memberCtrl.member.name">
+                                                <label for="nombre" data-error="Incorrecto">Nombre*</label>
+                                            </div>
+                                            <div class="col m6 s12 input-field padding_left_5">
+                                                <input id="edad" type="text" data-error="Incorrecto" required
+                                                       ng-model="memberCtrl.member.age">
+                                                <label for="edad" class="field_right" data-error="Incorrecto">Antigüedad*</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row no-margin-sides">
+                                            <div class="col m6 s12 input-field padding_right_5 ">
+                                                <select id="estado" name="estado" class="top_select" required
+                                                        ng-model="memberCtrl.member.status">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="1">Activo</option>
+                                                    <option value="2">Encarcelado</option>
+                                                </select>
+                                                <label for="estado" data-error="Incorrecto">Situación*</label>
+                                            </div>
+
+                                            <div class="col m6 s12 input-field padding_left_5 ">
+                                                <select id="boss" name="boss" class="top_select" required
+                                                        ng-model="memberCtrl.member.boss"
+                                                        ng-options="memb.name for memb in memberCtrl.members track by memb.id">
+                                                </select>
+                                                <label for="boss" data-error="Incorrecto">Jefe*</label>
+                                            </div>
+
+                                        </div>
+
+
+
+
+                                        <div class="row no-margin finForm">
+
+                                            <div class="col m3  s12 right-align no-padding boton_registro">
+                                                <button class="btn-large waves-effect waves-light primary_fondo boton-registro" type="submit"
+                                                        name="action"
+                                                        ng-disabled="!memberCtrl.memberForm.$valid" ng-cloak>
+                                                    GUARDAR
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </form>
+
+
+                                </div>
+                          </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/member.js' %}"></script>
+{% endblock %}
